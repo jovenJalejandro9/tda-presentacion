@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TDA en adultos: lo que dice la evidencia</title>
+<!--
+  Presentación autocontenida. Sin dependencias externas: ni fuentes, ni scripts, ni imágenes de red.
+  Tipografía: pila de fuentes del sistema (no se embebe ninguna fuente, así que no hay licencias que declarar).
+  Contenido: exclusivamente de la carpeta fuente/ (base de conocimiento revisada a 14-nov-2026).
+  Navegación: flechas, espacio, Inicio/Fin, M (mapa). Enlace directo: #12 o ?slide=12.
+-->
+<style>
+:root{
+  --papel:#FAF7F2; --panel:#EFEAE1; --tinta:#16202E; --tinta2:#4A5568; --noche:#101B2D;
+  --niebla:#C9D1DC; --ambar:#F2A900; --verde:#0F766E; --rojo:#B42318; --violeta:#5B4BC4;
+  --ocre:#8A5200; --linea:#D9D3C7; --verde-n:#5EEAD4; --rojo-n:#FF9B8A; --violeta-n:#B8AEFF;
+  --fuente:"Avenir Next","Segoe UI Variable Display","Segoe UI","Noto Sans","Helvetica Neue","Liberation Sans",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+b,strong{font-weight:700}
+html,body{height:100%;background:#070C16;overflow:hidden}
+body{font-family:var(--fuente);color:var(--tinta);-webkit-font-smoothing:antialiased}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;
+  transform:translate(-50%,-50%);overflow:hidden;background:var(--papel)}
+
+/* ---------- Diapositiva ---------- */
+.slide{position:absolute;inset:0;display:none;flex-direction:column;padding:96px 120px 60px;
+  background:var(--papel);color:var(--tinta);font-variant-numeric:tabular-nums lining-nums}
+.slide.active{display:flex}
+.slide.oscura{background:var(--noche);color:var(--papel)}
+.cab{display:flex;justify-content:space-between;align-items:baseline;height:40px;margin-bottom:24px;
+  font-size:24px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta2);flex:none}
+.oscura .cab{color:var(--niebla)}
+h1{font-size:72px;line-height:1.1;font-weight:700;max-width:1560px;text-wrap:balance;flex:none;letter-spacing:-.01em}
+.main{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:28px;padding-top:24px}
+.cuerpo{font-size:40px;line-height:1.3;font-weight:500;max-width:1440px}
+.cuerpo.s{font-size:34px}
+.matiz{flex:none;font-size:28px;line-height:1.3;font-weight:500;color:var(--ocre);margin-top:20px;display:flex;gap:16px;align-items:flex-start}
+.matiz .et{flex:none;font-size:22px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:3px solid currentColor;border-radius:8px;padding:2px 10px;margin-top:3px}
+.oscura .matiz{color:var(--ambar)}
+.pie{flex:none;min-height:62px;margin-top:16px;display:flex;align-items:flex-end;font-size:24px;line-height:1.3;font-weight:500;color:var(--tinta2)}
+.pie>span{display:block}
+.oscura .pie{color:var(--niebla)}
+.nv{display:inline;white-space:nowrap;font-family:var(--mono);font-size:20px;font-weight:700;line-height:1;padding:3px 8px;border-radius:6px;
+  background:var(--tinta2);color:var(--papel);vertical-align:2px;margin:0 2px}
+.oscura .nv{background:var(--niebla);color:var(--noche)}
+.nv.g{font-size:44px;padding:10px 18px;border-radius:12px;margin:0;align-self:flex-start;display:inline-block}
+
+/* ---------- Piezas ---------- */
+.fila{display:flex;gap:64px;align-items:center}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tarjeta{background:var(--panel);border-radius:20px;padding:36px 40px}
+.cifra{font-weight:700;line-height:.95;letter-spacing:-.02em;white-space:nowrap}
+.cifra.g{font-size:230px}
+.cifra.m{font-size:140px}
+.cifra .u{font-size:.4em;font-weight:600;letter-spacing:0;margin-left:.12em}
+.rot{font-size:34px;line-height:1.25;font-weight:600}
+.peq{font-size:28px;line-height:1.3;font-weight:500;color:var(--tinta2)}
+.oscura .peq{color:var(--niebla)}
+.mito{flex:none;display:flex;align-items:center;gap:20px;font-size:36px;font-weight:500;color:var(--tinta2);margin-bottom:18px}
+.mito .et,.et-ok{font-size:22px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:8px;padding:4px 12px}
+.mito .et{background:var(--rojo);color:#fff}
+.et-ok{background:var(--verde);color:#fff}
+.mito s{text-decoration-thickness:3px;text-decoration-color:var(--rojo)}
+svg{display:block;flex:none}
+svg text{font-family:var(--fuente);fill:currentColor}
+.ico{width:96px;height:96px;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.ico.p{width:56px;height:56px;stroke-width:6}
+.ico.x{width:44px;height:44px;stroke-width:9;vertical-align:-8px}
+.c-verde{color:var(--verde)} .c-rojo{color:var(--rojo)} .c-violeta{color:var(--violeta)} .c-ocre{color:var(--ocre)} .c-t2{color:var(--tinta2)}
+.t24{font-size:24px;font-weight:500}.t28{font-size:28px;font-weight:600}.t32{font-size:32px;font-weight:600}
+.t40{font-size:40px;font-weight:700}.t56{font-size:56px;font-weight:700}
+.sello{display:inline-block;font-size:26px;font-weight:700;letter-spacing:.04em;border:4px solid currentColor;border-radius:999px;padding:8px 24px}
+
+/* iconos en fila */
+.iconos{display:grid;gap:32px}
+.iconos .it{display:flex;flex-direction:column;gap:12px;align-items:flex-start;font-size:30px;font-weight:600;line-height:1.2}
+.iconos .it .ico{color:var(--tinta)}
+.acento{stroke:#B26F00}
+.oscura .acento{stroke:var(--ambar)}
+
+/* leyenda de niveles */
+.niveles{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+.niveles .tarjeta{padding:24px 26px;display:flex;flex-direction:column;gap:14px;font-size:28px;line-height:1.25;font-weight:500}
+
+/* línea de tiempo */
+.tiempo{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;position:relative;padding-top:44px}
+.tiempo::before{content:"";position:absolute;left:14px;right:0;top:12px;height:4px;background:var(--tinta2)}
+.tiempo .h{position:relative;font-size:32px;line-height:1.25;font-weight:500}
+.tiempo .h::before{content:"";position:absolute;left:0;top:-46px;width:28px;height:28px;border-radius:50%;background:var(--papel);border:6px solid var(--tinta)}
+.tiempo .h:last-child::before{background:var(--ambar)}
+.tiempo .h b{display:block;font-size:48px;font-weight:700;margin-bottom:6px}
+
+/* tabla España */
+.tabla{display:grid;grid-template-columns:520px 500px 1fr;border-radius:20px;overflow:hidden}
+.tabla>div{padding:18px 28px;font-size:30px;line-height:1.2;font-weight:600;display:flex;align-items:center;gap:16px;min-height:96px;border-top:3px solid var(--papel);background:var(--panel)}
+.tabla>.th{font-size:24px;letter-spacing:.08em;text-transform:uppercase;color:var(--papel);background:var(--tinta);min-height:64px;border-top:0}
+.tabla small{display:block;font-size:24px;font-weight:500;color:var(--tinta2)}
+
+/* escalera */
+.escalera{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;align-items:end}
+.escalera .p{display:flex;flex-direction:column;gap:8px}
+.escalera .p b{font-size:34px;font-weight:700}
+.escalera .p .n{font-size:64px;font-weight:700;line-height:1}
+.escalera .p .n small{font-size:28px;font-weight:600}
+.escalera .p span{font-size:26px;line-height:1.25;font-weight:500;min-height:98px}
+.escalera .p i{display:block;border-radius:10px 10px 0 0;margin-top:8px}
+.raya{background:repeating-linear-gradient(135deg,var(--violeta) 0 10px,#8C7FE0 10px 20px)}
+
+/* listas */
+.lista{list-style:none;display:flex;flex-direction:column;gap:18px}
+.lista li{display:flex;gap:18px;align-items:flex-start;font-size:32px;line-height:1.25;font-weight:600}
+.lista li small{display:block;font-size:26px;font-weight:500;color:var(--tinta2)}
+.lista li .ico{flex:none;margin-top:0}
+.tarjeta h2{font-size:30px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+
+/* mitos en filas */
+.mitos{display:grid;grid-template-columns:600px 60px 1fr;row-gap:18px;align-items:center}
+.mitos>div{font-size:32px;line-height:1.25}
+.mitos .m{color:var(--tinta2);font-weight:500;padding:26px 30px;background:var(--panel);border-radius:16px;min-height:132px;display:flex;align-items:center}
+.mitos .m s{text-decoration-thickness:3px;text-decoration-color:var(--rojo)}
+.mitos .f{text-align:center;font-size:44px;font-weight:700;color:var(--tinta2)}
+.mitos .r{font-weight:600}
+.mitos .r small{display:block;font-size:24px;font-weight:500;color:var(--tinta2);margin-top:4px}
+
+/* palancas */
+.palancas{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.palancas .tarjeta{padding:30px 30px 26px;display:flex;flex-direction:column;gap:12px}
+.palancas .tarjeta>b{font-size:40px;font-weight:700;line-height:1.1}
+.palancas span{font-size:28px;line-height:1.28;font-weight:500}
+.palancas small{font-size:24px;font-weight:500;color:var(--tinta2);margin-top:auto;padding-top:10px}
+.palancas .ico{width:80px;height:80px}
+
+/* preguntas */
+.preguntas{list-style:none;display:flex;flex-direction:column;gap:14px;counter-reset:q}
+.preguntas li{counter-increment:q;display:flex;align-items:center;gap:28px;background:var(--panel);border-radius:16px;padding:16px 30px;font-size:34px;line-height:1.22;font-weight:600;min-height:92px}
+.preguntas li::before{content:counter(q);flex:none;width:60px;height:60px;border-radius:50%;border:5px solid var(--ambar);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700}
+
+/* cierre */
+.ideas{list-style:none;display:flex;flex-direction:column;gap:34px;counter-reset:i}
+.ideas li{counter-increment:i;display:flex;gap:32px;align-items:center;font-size:52px;line-height:1.15;font-weight:600}
+.ideas li::before{content:counter(i);flex:none;width:84px;height:84px;border-radius:50%;border:6px solid var(--ambar);color:var(--ambar);display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:700}
+
+/* bibliografía */
+.biblio{columns:3;column-gap:40px;list-style:none;font-size:22px;line-height:1.3;font-weight:500}
+.biblio li{break-inside:avoid;padding:5px 0;border-bottom:2px solid var(--linea);display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.biblio li b{font-weight:700}
+.biblio .nv{font-size:18px;flex:none}
+
+/* ---------- Cromo: mapa, progreso, botones ---------- */
+.tira{position:absolute;left:120px;top:30px;display:flex;gap:8px;z-index:5}
+.tira button{font:700 20px/1 var(--mono);width:40px;height:36px;border-radius:8px;border:2px solid var(--linea);background:transparent;color:var(--tinta2);cursor:pointer}
+.tira button.act{background:var(--ambar);border-color:var(--ambar);color:var(--tinta)}
+.btn-mapa{position:absolute;right:120px;top:30px;z-index:5;font:600 22px/1 var(--fuente);height:36px;padding:0 16px;border-radius:8px;border:2px solid var(--linea);background:transparent;color:var(--tinta2);cursor:pointer}
+.nav{position:absolute;bottom:22px;width:60px;height:60px;border-radius:50%;border:2px solid var(--linea);background:transparent;color:var(--tinta2);cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center}
+.nav svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.nav.ant{left:30px}.nav.sig{right:30px}
+.nav:disabled{opacity:.35;cursor:default}
+#stage.en-oscuro .tira button,#stage.en-oscuro .btn-mapa,#stage.en-oscuro .nav{border-color:#3A4A63;color:var(--niebla)}
+#stage.en-oscuro .tira button.act{border-color:var(--ambar);color:var(--tinta)}
+button:focus-visible{outline:4px solid var(--violeta);outline-offset:3px}
+#stage.en-oscuro button:focus-visible{outline-color:var(--ambar)}
+.prog{position:absolute;left:0;right:0;bottom:0;height:6px;display:flex;gap:4px;z-index:5;background:transparent}
+.prog i{display:block;height:100%;background:var(--linea);position:relative;overflow:hidden}
+.prog i.hecha{background:var(--tinta2)}
+.prog i b{position:absolute;left:0;top:0;bottom:0;background:var(--ambar)}
+#stage.en-oscuro .prog i{background:#2A3850}
+#stage.en-oscuro .prog i.hecha{background:var(--niebla)}
+.mapa{position:absolute;inset:0;z-index:20;background:rgba(16,27,45,.97);color:var(--papel);padding:80px 120px;display:none;flex-direction:column;gap:28px}
+.mapa.abierto{display:flex}
+.mapa h2{font-size:48px;font-weight:700}
+.mapa .cerrar{position:absolute;right:120px;top:76px;font:600 26px/1 var(--fuente);padding:14px 22px;border-radius:10px;border:2px solid var(--niebla);background:transparent;color:var(--papel);cursor:pointer}
+.mapa ol{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 40px;align-content:start}
+.mapa li{break-inside:avoid}
+.mapa li>b{display:block;font-size:26px;font-weight:700;color:var(--ambar);margin-bottom:6px}
+.mapa li button{display:block;width:100%;text-align:left;font:500 23px/1.3 var(--fuente);color:var(--papel);background:transparent;border:0;padding:3px 0;cursor:pointer}
+.mapa li button:hover{text-decoration:underline}
+.mapa li button.act{color:var(--ambar);font-weight:700}
+.mapa .ayuda{font-size:24px;color:var(--niebla);margin-top:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Animación (el estado final es el estado por defecto) ---------- */
+@keyframes sube{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes traza{from{stroke-dashoffset:var(--largo,2000)}to{stroke-dashoffset:0}}
+@keyframes crece{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes creceY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+#stage.anim .slide.active>*{animation:sube .28s cubic-bezier(.2,.7,.2,1) both}
+#stage.anim .slide.active>*:nth-child(2){animation-delay:.06s}
+#stage.anim .slide.active>*:nth-child(3){animation-delay:.12s}
+#stage.anim .slide.active>*:nth-child(n+4){animation-delay:.18s}
+#stage.anim .slide.active .anillo{stroke-dasharray:var(--largo,2000);animation:traza .6s ease-out .15s both}
+#stage.anim .slide.active .bx{transform-box:fill-box;transform-origin:left center;animation:crece .5s ease-out .2s both}
+#stage.anim .slide.active .by{transform-box:fill-box;transform-origin:center bottom;animation:creceY .5s ease-out .2s both}
+@media (prefers-reduced-motion:reduce){
+  #stage.anim .slide.active>*,#stage.anim .slide.active .anillo,#stage.anim .slide.active .bx,#stage.anim .slide.active .by{animation:none!important}
+}
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{height:auto;overflow:visible;background:#fff}
+  #stage{position:static;transform:none!important;height:auto;overflow:visible}
+  .slide{display:flex!important;position:relative;height:1080px;page-break-after:always;break-after:page}
+  .tira,.btn-mapa,.nav,.prog,.mapa{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Símbolos SVG propios -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-ok" viewBox="0 0 96 96"><path d="M18 50 L40 72 L80 26"/></symbol>
+    <symbol id="i-no" viewBox="0 0 96 96"><path d="M24 24 L72 72 M72 24 L24 72"/></symbol>
+    <symbol id="i-aprox" viewBox="0 0 96 96"><path d="M16 40 Q32 22 48 38 T80 36 M16 64 Q32 46 48 62 T80 60"/></symbol>
+    <symbol id="i-aviso" viewBox="0 0 96 96"><path d="M48 14 L86 80 H10 Z M48 40 V58 M48 68 V69"/></symbol>
+    <symbol id="i-duda" viewBox="0 0 96 96"><circle cx="48" cy="48" r="36"/><path d="M36 38 C36 24 60 24 60 38 C60 48 48 46 48 58 M48 70 V71"/></symbol>
+    <symbol id="i-persona" viewBox="0 0 96 96"><circle cx="48" cy="26" r="14"/><path d="M20 88 C20 62 32 50 48 50 C64 50 76 62 76 88 Z"/></symbol>
+    <symbol id="i-memoria" viewBox="0 0 96 96"><rect x="16" y="14" width="64" height="18" rx="6"/><rect x="16" y="40" width="64" height="18" rx="6"/><rect class="acento" x="16" y="66" width="64" height="18" rx="6"/></symbol>
+    <symbol id="i-freno" viewBox="0 0 96 96"><circle cx="48" cy="48" r="36"/><path class="acento" d="M38 34 V62 M58 34 V62"/></symbol>
+    <symbol id="i-plan" viewBox="0 0 96 96"><rect x="20" y="14" width="56" height="70" rx="8"/><path d="M48 34 H64 M48 50 H64 M48 66 H64"/><path class="acento" d="M30 33 L34 37 L41 29 M30 49 L34 53 L41 45"/></symbol>
+    <symbol id="i-ritmo" viewBox="0 0 96 96"><path d="M10 52 L22 52 L30 28 L40 70 L48 40 L56 60 L62 46"/><path class="acento" d="M62 46 L70 52 L86 52"/></symbol>
+    <symbol id="i-entrevista" viewBox="0 0 96 96"><path d="M12 18 H58 V46 H30 L18 58 V46 H12 Z"/><path class="acento" d="M44 58 H84 V80 H78 V90 L66 80 H44 Z"/></symbol>
+    <symbol id="i-infancia" viewBox="0 0 96 96"><circle cx="50" cy="50" r="32"/><path d="M50 30 V50 L64 58"/><path class="acento" d="M10 34 L18 48 L30 38"/></symbol>
+    <symbol id="i-informante" viewBox="0 0 96 96"><circle cx="32" cy="30" r="12"/><path d="M10 80 C10 60 20 50 32 50 C44 50 54 60 54 80"/><circle class="acento" cx="68" cy="36" r="10"/><path class="acento" d="M56 80 C56 64 60 56 68 56 C78 56 86 64 86 80"/></symbol>
+    <symbol id="i-lupa" viewBox="0 0 96 96"><circle cx="42" cy="42" r="26"/><path class="acento" d="M62 62 L84 84"/></symbol>
+    <symbol id="i-pulso" viewBox="0 0 96 96"><path d="M48 82 C20 62 10 46 10 32 C10 20 20 12 30 12 C38 12 44 16 48 24 C52 16 58 12 66 12 C76 12 86 20 86 32 C86 46 76 62 48 82 Z"/><path class="acento" d="M22 46 H36 L42 34 L50 58 L56 46 H74"/></symbol>
+    <symbol id="i-calendario" viewBox="0 0 96 96"><rect x="14" y="20" width="68" height="62" rx="8"/><path d="M14 38 H82 M30 12 V26 M66 12 V26"/><path class="acento" d="M34 58 L44 68 L62 48"/></symbol>
+    <symbol id="i-luna" viewBox="0 0 96 96"><path d="M66 60 C44 60 30 44 34 20 C18 26 10 42 14 58 C18 76 36 88 56 84 C68 82 78 74 82 62 C78 62 72 62 66 60 Z"/><path class="acento" d="M66 18 V34 M58 26 H74"/></symbol>
+    <symbol id="i-revisar" viewBox="0 0 96 96"><path d="M80 48 A32 32 0 1 1 68 23"/><path class="acento" d="M56 22 H70 V8"/></symbol>
+    <pattern id="raya" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="12" height="12" fill="#5B4BC4"/><rect width="5" height="12" fill="#9C91E6"/></pattern>
+    <filter id="borroso" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+</svg>
+
+<div id="stage">
+
+<!-- ============ 01 · PORTADA ============ -->
+<section class="slide oscura" data-sec="0" data-t="Portada">
+  <div class="main" style="justify-content:center">
+    <div class="fila" style="gap:80px">
+      <div style="flex:1">
+        <p class="cab" style="margin-bottom:36px;justify-content:flex-start">Guía visual · TDAH de presentación inatenta</p>
+        <h1 style="font-size:150px;font-weight:800;line-height:1">TDA en adultos</h1>
+        <p class="cuerpo" style="margin-top:44px;max-width:900px">Lo que dice la evidencia, para entender lo que te pasa y preparar tus consultas.</p>
+      </div>
+      <svg width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Un anillo que pasa de borroso a nítido: enfocar">
+        <circle cx="270" cy="300" r="210" fill="none" stroke="#C9D1DC" stroke-width="26" opacity=".35" filter="url(#borroso)"/>
+        <circle class="anillo" style="--largo:1400" cx="330" cy="300" r="210" fill="none" stroke="#F2A900" stroke-width="10"/>
+        <circle cx="330" cy="300" r="16" fill="#F2A900"/>
+      </svg>
+    </div>
+  </div>
+  <p class="pie"><span>Base de conocimiento revisada a 14-nov-2026 · Avanza con las flechas del teclado o tocando el lado derecho · M abre el mapa</span></p>
+</section>
+
+<!-- ============ 02 · AVISO ============ -->
+<section class="slide" data-sec="0" data-t="Aviso y cómo leer">
+  <h1>Esto no sustituye a tu psiquiatra</h1>
+  <div class="main">
+    <p class="cuerpo">Sirve para entender y para preparar consultas. Las dosis de ficha técnica son información, no una pauta.</p>
+    <div class="niveles" role="list" aria-label="Niveles de evidencia que aparecen al pie de cada diapositiva">
+      <div class="tarjeta" role="listitem"><b class="nv g">A</b><span>Guía, revisión sistemática o metaanálisis</span></div>
+      <div class="tarjeta" role="listitem"><b class="nv g">B</b><span>Ensayo sólido o gran registro poblacional</span></div>
+      <div class="tarjeta" role="listitem"><b class="nv g">C</b><span>Estudio pequeño, revisión narrativa o consenso</span></div>
+      <div class="tarjeta" role="listitem"><b class="nv g">D</b><span>Opinión, divulgación o página institucional</span></div>
+      <div class="tarjeta" role="listitem"><b class="nv g">Of</b><span>Fuente oficial: DSM, ficha técnica, BIFIMED</span></div>
+    </div>
+    <p class="peq" style="font-size:30px;color:var(--tinta)">Al pie verás también el ámbito: <b>adultos</b>, <b>inatentos</b> o <b>extrapolado</b> (de niños o de muestras mixtas). <b>Deducción</b> = inferencia nuestra, no lo dice la fuente.</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Un nivel alto no es certeza alta: un metaanálisis es A aunque su certeza sea muy baja. Y B en un registro no significa causalidad.</span></p>
+  <p class="pie"><span>Aviso y escala de evidencia: base de conocimiento (índice y registro de decisiones), 14-nov-2026</span></p>
+</section>
+
+<!-- ============ 03 · TDA = TDAH ============ -->
+<section class="slide" data-sec="1" data-t="«TDA» es TDAH con otro perfil">
+  <h1>«TDA» es TDAH con otro perfil</h1>
+  <div class="main">
+    <p class="cuerpo">Hoy se llama TDAH de presentación predominantemente inatenta. Es el mismo trastorno: la «H» no significa que todos sean hiperactivos.</p>
+    <div class="tiempo" role="img" aria-label="Línea de tiempo: 1980, DSM-III, con o sin hiperactividad; DSM-IV, tres subtipos; 2013, DSM-5, presentaciones">
+      <div class="h"><b>1980</b>DSM-III: déficit de atención «con» o «sin hiperactividad». De ahí viene «TDA».</div>
+      <div class="h"><b>DSM-IV</b>Tres subtipos: inatento, hiperactivo-impulsivo y combinado.</div>
+      <div class="h"><b>2013</b>DSM-5: «presentaciones», porque los síntomas cambian con la edad.</div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Parte de los adultos «inatentos» fueron combinados de niños, y ese subgrupo tuvo más uso de sustancias (evidencia preliminar): conviene reconstruir la infancia.</span></p>
+  <p class="pie"><span>Willcutt 2012&nbsp;<b class="nv">A</b> extrapolado (mayoría de estudios en niños) — Epstein 2013&nbsp;<b class="nv">Of</b> — Becker 2023&nbsp;<b class="nv">C</b> — Sobanski 2008&nbsp;<b class="nv">C</b> inatentos, adultos (n=118)</span></p>
+</section>
+
+<!-- ============ 04 · PREVALENCIA ============ -->
+<section class="slide" data-sec="1" data-t="No se acaba en la infancia">
+  <h1>No se acaba en la infancia</h1>
+  <div class="main">
+    <div class="fila" style="gap:72px">
+      <div style="flex:none">
+        <p class="cifra g" style="font-size:210px">2,5–2,8&nbsp;<span class="u" style="font-size:.6em">%</span></p>
+        <p class="rot" style="margin-top:18px">de los adultos tiene TDAH</p>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:26px">
+        <div>
+          <svg width="560" height="92" viewBox="0 0 560 92" role="img" aria-label="Seis figuras, una destacada: 1 de cada 6">
+            <use href="#i-persona" x="0" y="0" width="88" height="88" fill="#16202E" stroke="#16202E" stroke-width="4"/>
+            <g fill="none" stroke="#4A5568" stroke-width="4" stroke-linejoin="round">
+              <use href="#i-persona" x="94" y="0" width="88" height="88"/><use href="#i-persona" x="188" y="0" width="88" height="88"/>
+              <use href="#i-persona" x="282" y="0" width="88" height="88"/><use href="#i-persona" x="376" y="0" width="88" height="88"/>
+              <use href="#i-persona" x="470" y="0" width="88" height="88"/>
+            </g>
+          </svg>
+          <p class="rot" style="margin-top:10px"><b>1 de cada 6</b> cumple todos los criterios a los 25 años</p>
+        </div>
+        <div>
+          <svg width="560" height="36" viewBox="0 0 560 36" role="img" aria-label="Barra llena hasta la mitad: cerca del 50 %">
+            <rect x="2" y="2" width="556" height="32" rx="8" fill="none" stroke="#4A5568" stroke-width="4"/>
+            <rect class="bx" x="2" y="2" width="278" height="32" rx="8" fill="#16202E"/>
+          </svg>
+          <p class="rot" style="margin-top:10px"><b>Cerca de la mitad</b> mantiene un deterioro residual</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>«Todos los criterios» y «deterioro residual» miden cosas distintas; por eso conviven las dos cifras. La inatención es lo que más persiste.</span></p>
+  <p class="pie"><span>Prevalencia: Faraone 2021&nbsp;<b class="nv">A</b>, Kooij 2019&nbsp;<b class="nv">C</b> y Cortese 2025&nbsp;<b class="nv">C</b> adultos — Persistencia a los 25 años: Faraone 2021&nbsp;<b class="nv">A</b></span></p>
+</section>
+
+<!-- ============ 05 · INTERÉS ============ -->
+<section class="slide" data-sec="2" data-t="La atención depende del interés">
+  <p class="mito"><span class="et">Mito</span><s>«Si me concentro en lo que me gusta, no es TDAH»</s></p>
+  <h1>La atención depende del interés, no de la voluntad</h1>
+  <div class="main">
+    <p class="cuerpo">Se puede brillar en lo que engancha y fallar en lo rutinario: facturas, casa, papeleo. No es pereza.</p>
+    <div>
+      <div class="iconos" style="grid-template-columns:repeat(4,1fr)">
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-memoria"/></svg>Memoria de trabajo</div>
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-freno"/></svg>Inhibición</div>
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-plan"/></svg>Planificación</div>
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-ritmo"/></svg>Constancia del ritmo</div>
+      </div>
+      <p class="peq" style="margin-top:16px">Cuatro funciones con deterioro moderado en el TDAH, menor en adultos que en niños.</p>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Los perfiles varían mucho de una persona a otra: las pruebas neuropsicológicas no sirven para diagnosticar.</span></p>
+  <p class="pie"><span>Atención e interés: Kooij 2019&nbsp;<b class="nv">C</b> inatentos, adultos — Funciones afectadas: Faraone 2021&nbsp;<b class="nv">A</b> adultos</span></p>
+</section>
+
+<!-- ============ 06 · EMOCIONES ============ -->
+<section class="slide" data-sec="2" data-t="Las emociones también forman parte">
+  <h1>Las emociones también forman parte</h1>
+  <div class="main">
+    <div class="fila" style="gap:80px">
+      <div style="flex:1">
+        <p class="cifra g">g = 1,17</p>
+        <p class="rot" style="margin-top:60px">Diferencia <b>grande</b> en desregulación emocional frente a adultos sin TDAH</p>
+      </div>
+      <svg width="600" height="340" viewBox="0 0 600 340" role="img" aria-label="Esquema ilustrativo: dos curvas en campana, la de adultos con TDAH desplazada 1,17 desviaciones hacia más desregulación emocional">
+        <path d="M30,270 C156,270 177,60 240,60 C303,60 324,270 450,270" fill="none" stroke="#4A5568" stroke-width="5"/>
+        <path d="M112,270 C238,270 259,60 322,60 C385,60 406,270 532,270 Z" fill="#F2A900" fill-opacity=".35" stroke="#16202E" stroke-width="5"/>
+        <line x1="20" y1="270" x2="580" y2="270" stroke="#4A5568" stroke-width="3"/>
+        <text x="226" y="38" text-anchor="end" class="t28" fill="#4A5568" style="fill:#4A5568">Sin TDAH</text>
+        <text x="336" y="38" class="t28">Con TDAH</text>
+        <text x="300" y="316" text-anchor="middle" class="t24" style="fill:#4A5568">Esquema ilustrativo · más desregulación →</text>
+      </svg>
+    </div>
+    <p class="cuerpo">Muy frecuente, pero no es criterio diagnóstico: aparece en muchos otros trastornos.</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Es un dato de adultos con TDAH en general, no específico de inatentos. «g» mide el tamaño de la diferencia entre dos grupos.</span></p>
+  <p class="pie"><span>Beheshti 2020&nbsp;<b class="nv">A</b> adultos (13 estudios, n=2.535) — No es criterio diagnóstico: Kooij 2019&nbsp;<b class="nv">C</b></span></p>
+</section>
+
+<!-- ============ 07 · SUEÑO ============ -->
+<section class="slide" data-sec="2" data-t="El reloj interno va con retraso">
+  <h1>El reloj interno va con retraso</h1>
+  <div class="main">
+    <div class="fila" style="gap:72px">
+      <p class="cifra g" style="flex:none">73–78&nbsp;<span class="u" style="font-size:.55em">%</span></p>
+      <p class="rot" style="font-size:40px">de las personas con TDAH tiene un retraso de fase: su cuerpo se prepara para dormir más tarde.</p>
+    </div>
+    <svg width="1680" height="190" viewBox="0 0 1680 190" role="img" aria-label="Franja de 20:00 a 02:00. En un ensayo, el 77 % empezaba a segregar melatonina después de las 21:00; la hora media fue las 23:43">
+      <rect class="bx" x="340" y="102" width="1250" height="18" rx="9" fill="#F2A900" fill-opacity=".55"/>
+      <line x1="90" y1="111" x2="1590" y2="111" stroke="#4A5568" stroke-width="4"/>
+      <g stroke="#4A5568" stroke-width="4"><line x1="90" y1="96" x2="90" y2="126"/><line x1="340" y1="96" x2="340" y2="126"/><line x1="590" y1="96" x2="590" y2="126"/><line x1="840" y1="96" x2="840" y2="126"/><line x1="1090" y1="96" x2="1090" y2="126"/><line x1="1340" y1="96" x2="1340" y2="126"/><line x1="1590" y1="96" x2="1590" y2="126"/></g>
+      <g class="t24" text-anchor="middle" style="color:#4A5568"><text x="90" y="164">20:00</text><text x="340" y="164">21:00</text><text x="590" y="164">22:00</text><text x="840" y="164">23:00</text><text x="1090" y="164">00:00</text><text x="1340" y="164">01:00</text><text x="1590" y="164">02:00</text></g>
+      <circle cx="1019" cy="111" r="17" fill="#16202E" stroke="#F2A900" stroke-width="6"/>
+      <text x="1019" y="68" text-anchor="middle" class="t32">23:43 · hora media</text>
+      <text x="344" y="68" class="t32">77 %: después de las 21:00</text>
+    </svg>
+    <p class="peq">Inicio de la secreción de melatonina en un ensayo con adultos con TDAH y retraso de fase.</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>El 77 % y las 23:43 son de una muestra ya seleccionada por su retraso de fase. Es un problema de horario, no de estructura del sueño.</span></p>
+  <p class="pie"><span>Bijlenga 2019&nbsp;<b class="nv">C</b> adultos / extrapolado — van Andel 2021&nbsp;<b class="nv">C</b> adultos — Horario, no estructura: Faraone 2021&nbsp;<b class="nv">A</b></span></p>
+</section>
+
+<!-- ============ 08 · CDS ============ -->
+<section class="slide" data-sec="2" data-t="Inatento no es «niebla mental»">
+  <h1>Ser inatento no es lo mismo que tener «niebla mental»</h1>
+  <div class="main">
+    <p class="cuerpo">La desconexión cognitiva (CDS) —ensoñación, niebla, lentitud— se solapa con la inatención, pero se distingue de ella. No es un diagnóstico oficial.</p>
+    <svg width="1680" height="230" viewBox="0 0 1680 230" role="img" aria-label="Correlación del CDS en adultos: 0,72 con la inatención y 0,46 con la hiperactividad">
+      <text x="0" y="30" class="t28" style="fill:#4A5568">Correlación del CDS en adultos (0 = ninguna · 1 = total)</text>
+      <text x="0" y="104" class="t32">Con la inatención</text>
+      <text x="0" y="188" class="t32">Con la hiperactividad</text>
+      <rect x="400" y="66" width="1000" height="56" rx="6" fill="#EFEAE1"/><rect x="400" y="150" width="1000" height="56" rx="6" fill="#EFEAE1"/>
+      <rect class="bx" x="400" y="66" width="720" height="56" rx="6" fill="#16202E"/>
+      <rect class="bx" x="400" y="150" width="460" height="56" rx="6" fill="#4A5568"/>
+      <text x="1140" y="112" class="t56">r ≈ 0,72</text>
+      <text x="880" y="196" class="t56" style="fill:#4A5568">r ≈ 0,46</text>
+    </svg>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>No hay ningún tratamiento diseñado para el CDS. Deducción: antes de atribuirle la niebla, descartar falta de sueño o un trastorno del ánimo.</span></p>
+  <p class="pie"><span>Becker 2023&nbsp;<b class="nv">C</b> adultos (consenso de un grupo de trabajo)</span></p>
+</section>
+
+<!-- ============ 09 · DIAGNÓSTICO ============ -->
+<section class="slide" data-sec="3" data-t="El diagnóstico es una entrevista">
+  <h1>El diagnóstico es una entrevista, no un test</h1>
+  <div class="main">
+    <div class="fila" style="gap:72px;align-items:stretch">
+      <div class="iconos" style="grid-template-columns:1fr 1fr;flex:1;align-content:center;gap:36px 32px">
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-entrevista"/></svg>Entrevista clínica</div>
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-infancia"/></svg>Historia de la infancia</div>
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-informante"/></svg>Alguien que te conozca bien</div>
+        <div class="it"><svg class="ico" aria-hidden="true"><use href="#i-lupa"/></svg>Descartar otras causas</div>
+      </div>
+      <div class="tarjeta" style="flex:none;width:760px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+        <p class="cifra m">5 de 9</p>
+        <p class="rot">síntomas de inatención en adultos, con inicio <b>antes de los 12 años</b> y deterioro en dos o más ámbitos.</p>
+      </div>
+    </div>
+    <p class="cuerpo s">Las escalas (como la ASRS) sirven para cribar y medir, no para diagnosticar.</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>En el predominio inatento el diagnóstico suele llegar tarde; un informante (padres o pareja) tiene mucho valor.</span></p>
+  <p class="pie"><span>Criterios DSM-5: Epstein 2013&nbsp;<b class="nv">Of</b> adultos — Cómo se diagnostica: Faraone 2021&nbsp;<b class="nv">A</b> — Informante y predominio inatento: Kooij 2019&nbsp;<b class="nv">C</b> inatentos</span></p>
+</section>
+
+<!-- ============ 10 · BASE Y LÍMITE ============ -->
+<section class="slide" data-sec="4" data-t="Mucho de 12 semanas, poco de un año">
+  <h1>Sabemos mucho de 12 semanas y muy poco de un año</h1>
+  <div class="main">
+    <div class="fila" style="gap:72px">
+      <div style="flex:1;display:flex;flex-direction:column;gap:28px">
+        <p class="cuerpo">El mayor análisis reúne <b>113 ensayos</b> y <b>14.887 adultos</b>.</p>
+        <p class="cuerpo">Casi todos duran unas 12 semanas.</p>
+      </div>
+      <svg width="780" height="430" viewBox="0 0 780 430" role="img" aria-label="Ensayos con datos según el plazo: 87 a unas 12 semanas, 17 a 26 semanas y 5 a 52 semanas">
+        <rect class="by" x="50" y="84" width="170" height="276" rx="6" fill="#16202E"/>
+        <rect class="by" x="305" y="302" width="170" height="58" rx="6" fill="#4A5568"/>
+        <rect class="by" x="560" y="343" width="170" height="17" rx="5" fill="#B42318"/>
+        <line x1="20" y1="360" x2="760" y2="360" stroke="#4A5568" stroke-width="4"/>
+        <text x="135" y="68" text-anchor="middle" class="t56">87</text>
+        <text x="390" y="288" text-anchor="middle" class="t56">17</text>
+        <text x="645" y="329" text-anchor="middle" class="t56" style="fill:#B42318">5</text>
+        <g class="t28" text-anchor="middle"><text x="135" y="404">~12 semanas</text><text x="390" y="404">26 semanas</text><text x="645" y="404">52 semanas</text></g>
+      </svg>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Hablamos de ensayos. Los registros sí siguen a la gente durante años, pero muestran asociaciones, no eficacia.</span></p>
+  <p class="pie"><span>Ostinelli 2025&nbsp;<b class="nv">A</b> adultos · número de ensayos aleatorizados con datos en cada plazo</span></p>
+</section>
+
+<!-- ============ 11 · EFICACIA ============ -->
+<section class="slide" data-sec="4" data-t="Estimulantes y atomoxetina">
+  <h1>Estimulantes y atomoxetina: los dos que mejoran los síntomas</h1>
+  <div class="main" style="gap:18px">
+    <p class="cuerpo s">Las únicas intervenciones con beneficio tanto según el paciente como según el clínico, a unas 12 semanas.</p>
+    <svg width="1680" height="340" viewBox="0 0 1680 340" role="img" aria-label="Mejora frente a placebo. Estimulantes: menos 0,39 según el paciente y menos 0,61 según el clínico. Atomoxetina: menos 0,38 según el paciente y menos 0,51 según el clínico">
+      <line x1="560" y1="34" x2="560" y2="306" stroke="#4A5568" stroke-width="3" stroke-dasharray="8 8"/>
+      <text x="560" y="24" text-anchor="middle" class="t24" style="fill:#4A5568">0 = igual que placebo</text>
+      <text x="1470" y="24" text-anchor="end" class="t24" style="fill:#4A5568">más mejora →</text>
+      <text x="0" y="104" class="t40">Estimulantes</text>
+      <text x="0" y="250" class="t40">Atomoxetina</text>
+      <g class="t24" text-anchor="end" style="fill:#4A5568"><text x="540" y="78">paciente</text><text x="540" y="134">clínico</text><text x="540" y="224">paciente</text><text x="540" y="280">clínico</text></g>
+      <!-- escala: 1125 px por unidad desde x=560 -->
+      <rect class="bx" x="560" y="50" width="439" height="40" rx="5" fill="#0F766E" fill-opacity=".3"/>
+      <rect class="bx" x="560" y="106" width="686" height="40" rx="5" fill="#16202E" fill-opacity=".25"/>
+      <rect class="bx" x="560" y="196" width="428" height="40" rx="5" fill="#0F766E" fill-opacity=".3"/>
+      <rect class="bx" x="560" y="252" width="574" height="40" rx="5" fill="#16202E" fill-opacity=".25"/>
+      <g stroke="#0F766E" stroke-width="4"><line x1="853" y1="70" x2="1145" y2="70"/><line x1="853" y1="58" x2="853" y2="82"/><line x1="1145" y1="58" x2="1145" y2="82"/>
+        <line x1="796" y1="216" x2="1190" y2="216"/><line x1="796" y1="204" x2="796" y2="228"/><line x1="1190" y1="204" x2="1190" y2="228"/></g>
+      <g stroke="#16202E" stroke-width="4"><line x1="1134" y1="126" x2="1359" y2="126"/><line x1="1134" y1="114" x2="1134" y2="138"/><line x1="1359" y1="114" x2="1359" y2="138"/>
+        <line x1="976" y1="272" x2="1280" y2="272"/><line x1="976" y1="260" x2="976" y2="284"/><line x1="1280" y1="260" x2="1280" y2="284"/></g>
+      <circle cx="999" cy="70" r="11" fill="#0F766E"/><circle cx="988" cy="216" r="11" fill="#0F766E"/>
+      <circle cx="1246" cy="126" r="11" fill="#16202E"/><circle cx="1134" cy="272" r="11" fill="#16202E"/>
+      <text x="1400" y="84" class="t40" style="fill:#0F766E">−0,39</text>
+      <text x="1400" y="140" class="t40">−0,61</text>
+      <text x="1400" y="230" class="t40" style="fill:#0F766E">−0,38</text>
+      <text x="1400" y="286" class="t40">−0,51</text>
+      <text x="1680" y="330" text-anchor="end" class="t24" style="fill:#4A5568">Punto = estimación · línea = intervalo de confianza</text>
+    </svg>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>«Estimulantes» agrupa metilfenidato, anfetaminas y lisdexanfetamina. Solo síntomas y solo a corto plazo.</span></p>
+  <p class="pie"><span>Ostinelli 2025&nbsp;<b class="nv">A</b> adultos · diferencia estandarizada (SMD) frente a placebo: cuanto más negativa, más mejora</span></p>
+</section>
+
+<!-- ============ 12 · DISPUTA ============ -->
+<section class="slide" data-sec="4" data-t="¿Lisdexanfetamina mejor? En disputa">
+  <h1>¿Lisdexanfetamina mejor que metilfenidato? En disputa</h1>
+  <div class="main">
+    <div class="dos">
+      <div class="tarjeta" style="border-top:10px solid var(--violeta);min-height:360px">
+        <h2 class="c-violeta"><svg class="ico x" aria-hidden="true"><use href="#i-aprox"/></svg>Cortese 2018: «sí»</h2>
+        <svg width="720" height="210" viewBox="0 0 720 210" role="img" aria-label="Según el clínico: anfetaminas menos 0,79, con intervalo de menos 0,99 a menos 0,58; metilfenidato menos 0,49">
+          <line x1="250" y1="10" x2="250" y2="170" stroke="#4A5568" stroke-width="3" stroke-dasharray="8 8"/>
+          <text x="0" y="62" class="t32">Anfetaminas</text><text x="0" y="138" class="t32">Metilfenidato</text>
+          <!-- escala: 320 px por unidad desde x=250 -->
+          <rect class="bx" x="250" y="32" width="253" height="40" rx="5" fill="#5B4BC4" fill-opacity=".3"/>
+          <rect class="bx" x="250" y="108" width="157" height="40" rx="5" fill="#5B4BC4" fill-opacity=".3"/>
+          <g stroke="#16202E" stroke-width="4"><line x1="436" y1="52" x2="567" y2="52"/><line x1="436" y1="40" x2="436" y2="64"/><line x1="567" y1="40" x2="567" y2="64"/></g>
+          <circle cx="503" cy="52" r="11" fill="#16202E"/><circle cx="407" cy="128" r="11" fill="#16202E"/>
+          <text x="590" y="66" class="t40">−0,79</text><text x="590" y="142" class="t40">−0,49</text>
+          <text x="0" y="200" class="t24" style="fill:#4A5568">Según el clínico · más barra = más mejora frente a placebo</text>
+        </svg>
+      </div>
+      <div class="tarjeta" style="border-top:10px solid var(--violeta);min-height:360px">
+        <h2 class="c-violeta"><svg class="ico x" aria-hidden="true"><use href="#i-aprox"/></svg>Ostinelli 2025: «sin diferencia»</h2>
+        <div class="fila" style="gap:36px;margin-top:20px">
+          <svg class="ico c-violeta" style="width:150px;height:150px;stroke-width:6" aria-hidden="true"><use href="#i-aprox"/></svg>
+          <p class="rot" style="font-size:40px">«No difirieron materialmente»</p>
+        </div>
+        <p class="peq" style="margin-top:26px">Análisis de sensibilidad del metaanálisis más reciente y con más ensayos en adultos.</p>
+      </div>
+    </div>
+    <p class="cuerpo">Lo que se puede afirmar: son al menos igual de eficaces. Que una sea superior, no.</p>
+  </div>
+  <p class="pie"><span>Cortese 2018&nbsp;<b class="nv">A</b> adultos — Ostinelli 2025&nbsp;<b class="nv">A</b> adultos — NICE 2018&nbsp;<b class="nv">A</b> las sitúa al mismo nivel · Los dos metaanálisis son del mismo grupo y comparten ensayos</span></p>
+</section>
+
+<!-- ============ 13 · ACEPTABILIDAD ============ -->
+<section class="slide" data-sec="4" data-t="Los estimulantes se aceptan mejor">
+  <h1>Los estimulantes se aceptan mejor que la atomoxetina</h1>
+  <div class="main" style="gap:20px">
+    <p class="cuerpo s">Abandonos por cualquier causa frente a placebo: casi todo es parecido al placebo, salvo dos fármacos.</p>
+    <svg width="1680" height="330" viewBox="0 0 1680 330" role="img" aria-label="Abandonos frente a placebo. Estimulantes: similar a placebo. Atomoxetina: OR 1,43, intervalo de 1,14 a 1,80. Guanfacina: OR 3,70, intervalo de 1,22 a 11,19">
+      <!-- eje logarítmico: x = 420 + 797·log10(v/0,5) -->
+      <line x1="660" y1="20" x2="660" y2="262" stroke="#4A5568" stroke-width="3" stroke-dasharray="8 8"/>
+      <line x1="420" y1="262" x2="1520" y2="262" stroke="#4A5568" stroke-width="3"/>
+      <g stroke="#4A5568" stroke-width="3"><line x1="420" y1="254" x2="420" y2="270"/><line x1="660" y1="254" x2="660" y2="270"/><line x1="900" y1="254" x2="900" y2="270"/><line x1="1140" y1="254" x2="1140" y2="270"/><line x1="1380" y1="254" x2="1380" y2="270"/></g>
+      <g class="t24" text-anchor="middle" style="fill:#4A5568"><text x="420" y="300">0,5</text><text x="660" y="300">1 = igual que placebo</text><text x="900" y="300">2</text><text x="1140" y="300">4</text><text x="1380" y="300">8</text></g>
+      <text x="1520" y="300" text-anchor="middle" class="t24" style="fill:#4A5568">más abandonos →</text>
+      <text x="0" y="62" class="t40">Estimulantes</text>
+      <text x="0" y="142" class="t40">Atomoxetina</text>
+      <text x="0" y="222" class="t40">Guanfacina</text>
+      <text x="684" y="60" class="t32" style="fill:#0F766E">similar a placebo</text>
+      <g stroke="#16202E" stroke-width="5"><line x1="705" y1="130" x2="863" y2="130"/><line x1="705" y1="116" x2="705" y2="144"/><line x1="863" y1="116" x2="863" y2="144"/></g>
+      <circle cx="784" cy="130" r="13" fill="#16202E"/>
+      <text x="890" y="144" class="t40">OR 1,43</text>
+      <g stroke="#B42318" stroke-width="5"><line x1="729" y1="210" x2="1496" y2="210"/><line x1="729" y1="196" x2="729" y2="224"/><line x1="1496" y1="196" x2="1496" y2="224"/></g>
+      <circle cx="1113" cy="210" r="13" fill="#B42318"/>
+      <text x="1320" y="188" text-anchor="middle" class="t40" style="fill:#B42318">OR 3,70</text>
+    </svg>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>En abandonos por efectos adversos, también los estimulantes fueron peores que el placebo: «se aceptan mejor» no es «sin efectos adversos».</span></p>
+  <p class="pie"><span>Ostinelli 2025&nbsp;<b class="nv">A</b> adultos (77 ensayos, 13.008 participantes) · OR mayor que 1 = más abandonos que con placebo · eje logarítmico</span></p>
+</section>
+
+<!-- ============ 14 · CERTEZA ============ -->
+<section class="slide" data-sec="4" data-t="Certeza a debate">
+  <p class="mito"><span class="et">Mito</span><s>«Cochrane dice que el metilfenidato no funciona»</s></p>
+  <h1>Hay efecto. Lo que se discute es cuánta confianza merece</h1>
+  <div class="main">
+    <div class="dos">
+      <div class="tarjeta" style="border-top:10px solid var(--violeta)">
+        <h2>Cochrane (Boesen 2022)</h2>
+        <p class="rot">Efecto pequeño-moderado: <b>−0,37</b> en autoinforme<br><span class="peq">24 ensayos · 5.066 personas</span></p>
+        <p style="margin-top:22px" class="rot">Certeza: <span class="sello c-violeta">MUY BAJA</span></p>
+      </div>
+      <div class="tarjeta" style="border-top:10px solid var(--violeta)">
+        <h2>Gosling 2025</h2>
+        <p class="rot">Misma dirección del efecto, otro método para graduar la confianza<br><span class="peq">Revisión paraguas</span></p>
+        <p style="margin-top:22px" class="rot">Certeza: <span class="sello c-violeta">ALTA</span> y <span class="sello c-violeta">MODERADA</span><br><span class="peq">alta en autoinforme, moderada según el clínico</span></p>
+      </div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Ninguna de las dos sirve para decir «no funciona» ni «está demostrado sin dudas». Cochrane rebaja por riesgo de sesgo, ensayos cortos y financiación industrial.</span></p>
+  <p class="pie"><span>Boesen 2022 (Cochrane)&nbsp;<b class="nv">A</b> adultos, metilfenidato de liberación prolongada — Gosling 2025&nbsp;<b class="nv">A</b> adultos</span></p>
+</section>
+
+<!-- ============ 15 · CALIDAD DE VIDA ============ -->
+<section class="slide" data-sec="4" data-t="La vida diaria mejora mucho menos">
+  <h1>Mejora los síntomas. La vida diaria, mucho menos</h1>
+  <div class="main">
+    <div class="fila" style="gap:72px">
+      <div style="flex:none;width:640px">
+        <p class="cifra g" style="font-size:200px">−0,15</p>
+        <p class="rot" style="margin-top:18px">Efecto <b>pequeño</b> del metilfenidato en la calidad de vida</p>
+      </div>
+      <svg width="960" height="300" viewBox="0 0 960 300" role="img" aria-label="A la misma escala: síntomas menos 0,37; calidad de vida menos 0,15; días de trabajo perdidos, sin efecto">
+        <!-- escala: 1300 px por unidad desde x=330 -->
+        <line x1="330" y1="10" x2="330" y2="290" stroke="#4A5568" stroke-width="3" stroke-dasharray="8 8"/>
+        <text x="0" y="62" class="t32">Síntomas</text><text x="0" y="96" class="t24" style="fill:#4A5568">(autoinforme)</text>
+        <text x="0" y="164" class="t32">Calidad de vida</text>
+        <text x="0" y="250" class="t32">Días de trabajo</text><text x="0" y="284" class="t24" style="fill:#4A5568">perdidos</text>
+        <rect class="bx" x="330" y="30" width="481" height="56" rx="6" fill="#4A5568"/>
+        <rect class="bx" x="330" y="126" width="195" height="56" rx="6" fill="#16202E"/>
+        <text x="830" y="76" class="t40" style="fill:#4A5568">−0,37</text>
+        <text x="545" y="172" class="t40">−0,15</text>
+        <text x="350" y="262" class="t40" style="fill:#B42318">sin efecto</text>
+      </svg>
+    </div>
+    <p class="cuerpo s">La evidencia no apoya los fármacos como único tratamiento para mejorar la calidad de vida.</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Datos de metilfenidato de liberación prolongada, con certeza muy baja. Pequeño no significa inútil: los síntomas sí mejoran.</span></p>
+  <p class="pie"><span>Boesen 2022 (Cochrane)&nbsp;<b class="nv">A</b> adultos · diferencia estandarizada frente a placebo — Tratamiento único y calidad de vida: Ostinelli 2025&nbsp;<b class="nv">A</b></span></p>
+</section>
+
+<!-- ============ 16 · ESPAÑA ============ -->
+<section class="slide" data-sec="4" data-t="España: autorizado no es financiado">
+  <h1>En España: autorizado no es lo mismo que financiado</h1>
+  <div class="main">
+    <div class="tabla" role="table" aria-label="Autorización y financiación en adultos en España">
+      <div class="th" role="columnheader">Fármaco</div><div class="th" role="columnheader">¿Autorizado en adultos?</div><div class="th" role="columnheader">¿Financiado en adultos?</div>
+      <div role="cell"><span>Metilfenidato de liberación prolongada<small>varias marcas</small></span></div>
+      <div role="cell" class="c-verde"><svg class="ico p" aria-hidden="true"><use href="#i-ok"/></svg>Sí</div>
+      <div role="cell" class="c-verde"><svg class="ico p" aria-hidden="true"><use href="#i-ok"/></svg>Sí</div>
+      <div role="cell">Atomoxetina</div>
+      <div role="cell" class="c-verde"><svg class="ico p" aria-hidden="true"><use href="#i-ok"/></svg>Sí</div>
+      <div role="cell" class="c-verde"><svg class="ico p" aria-hidden="true"><use href="#i-ok"/></svg>Sí</div>
+      <div role="cell"><span>Lisdexanfetamina<small>Elvanse Adultos</small></span></div>
+      <div role="cell" class="c-verde"><svg class="ico p" aria-hidden="true"><use href="#i-ok"/></svg>Sí</div>
+      <div role="cell" class="c-ocre"><svg class="ico p" aria-hidden="true"><use href="#i-aviso"/></svg><span>Solo si el metilfenidato no bastó, y con visado<small>desde el 01/09/2021</small></span></div>
+      <div role="cell">Guanfacina</div>
+      <div role="cell" class="c-rojo"><svg class="ico p" aria-hidden="true"><use href="#i-no"/></svg><span>No: solo de 6 a 17 años<small>Ficha: «no se debe utilizar»</small></span></div>
+      <div role="cell" class="c-rojo"><svg class="ico p" aria-hidden="true"><use href="#i-no"/></svg>No</div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>No todas las marcas de metilfenidato tienen indicación en adultos: hay que mirar la ficha de cada una. La condición de Elvanse es administrativa, no de eficacia.</span></p>
+  <p class="pie"><span>Fichas técnicas de AEMPS-CIMA y BIFIMED (nomenclátor de noviembre de 2026)&nbsp;<b class="nv">Of</b> — Ficha de Intuniv, sección 4.2&nbsp;<b class="nv">Of</b></span></p>
+</section>
+
+<!-- ============ 17 · TCC ============ -->
+<section class="slide" data-sec="4" data-t="La TCC suma">
+  <h1>La terapia cognitivo-conductual suma cuando la medicación no basta</h1>
+  <div class="main">
+    <svg width="1680" height="270" viewBox="0 0 1680 270" role="img" aria-label="Respondedores: 53 % con terapia cognitivo-conductual frente a 23 % con relajación y apoyo educativo">
+      <text x="0" y="74" class="t40">TCC</text><text x="0" y="108" class="t24" style="fill:#4A5568">12 sesiones</text>
+      <text x="0" y="198" class="t40">Relajación</text><text x="0" y="232" class="t24" style="fill:#4A5568">con apoyo educativo</text>
+      <!-- escala: 100 % = 1000 px desde x=330 -->
+      <rect x="330" y="30" width="1000" height="84" rx="8" fill="#EFEAE1"/><rect x="330" y="154" width="1000" height="84" rx="8" fill="#EFEAE1"/>
+      <rect class="bx" x="330" y="30" width="530" height="84" rx="8" fill="#0F766E"/>
+      <rect class="bx" x="330" y="154" width="230" height="84" rx="8" fill="#4A5568"/>
+      <text x="884" y="98" style="font-size:84px;font-weight:700;fill:#0F766E">53 %</text>
+      <text x="584" y="222" style="font-size:84px;font-weight:700;fill:#4A5568">23 %</text>
+    </svg>
+    <p class="cuerpo">Respondedores entre adultos ya medicados que seguían con síntomas. Funciona mejor como complemento que como único tratamiento.</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>No está demostrado que la ventaja sobre el control dure 12 meses: la estabilidad solo se midió dentro del grupo de TCC. Con fármaco, la TCC añade a los 3 meses; a los 6 y 9, ya no de forma significativa.</span></p>
+  <p class="pie"><span>Safren 2010&nbsp;<b class="nv">B</b> adultos (n=86) — Como complemento: Kooij 2019&nbsp;<b class="nv">C</b> — TCC + fármaco frente a fármaco solo: Li y Zhang 2024&nbsp;<b class="nv">A</b></span></p>
+</section>
+
+<!-- ============ 18 · SOLIDEZ ============ -->
+<section class="slide" data-sec="4" data-t="No todas las terapias pisan igual de firme">
+  <h1>No todas las terapias pisan igual de firme</h1>
+  <div class="main" style="justify-content:flex-end;gap:0;padding-top:16px">
+    <div class="escalera">
+      <div class="p"><b>TCC</b><p class="n c-verde">0,43</p><span>frente a controles activos (0,76 frente a lista de espera)</span><i style="height:270px;background:var(--verde)"></i></div>
+      <div class="p"><b>Mindfulness</b><p class="n c-violeta">0,48</p><span>en autoinforme, con resultados muy dispares (I² = 83 %)</span><i class="raya" style="height:180px"></i></div>
+      <div class="p"><b>App de TCC (attexis)</b><p class="n c-violeta">−5,0 <small>puntos ASRS</small></p><span>un solo ensayo, sin cegamiento, financiado por el fabricante</span><i class="raya" style="height:100px"></i></div>
+      <div class="p"><b>Coaching</b><p class="n">0</p><span>estudios controlados: no está demostrado</span><i style="height:24px;border:4px dashed var(--tinta2);border-bottom:0"></i></div>
+    </div>
+    <div style="height:5px;background:var(--tinta2)"></div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Deducción nuestra: el orden es por solidez de la prueba, no por eficacia; las cifras no son comparables entre sí. En la TCC, cuanto mejor es el control, menor el efecto.</span></p>
+  <p class="pie"><span>TCC: Young 2020&nbsp;<b class="nv">A</b> — Mindfulness: Kim y Jung 2025&nbsp;<b class="nv">A</b> (incluye no aleatorizados) — App: D'Amelio 2026&nbsp;<b class="nv">B</b> — Coaching: Kooij&nbsp;2019&nbsp;<b class="nv">C</b> · adultos</span></p>
+</section>
+
+<!-- ============ 19 · SUEÑO Y EJERCICIO ============ -->
+<section class="slide" data-sec="4" data-t="Sueño y ejercicio">
+  <h1>Sueño y ejercicio: ayudan, sin prometer de más</h1>
+  <div class="main">
+    <div class="dos">
+      <div class="tarjeta">
+        <h2><svg class="ico p" aria-hidden="true"><use href="#i-luna"/></svg>Tratar el sueño</h2>
+        <svg width="740" height="190" viewBox="0 0 740 190" role="img" aria-label="Añadir tratamiento del sueño: fatiga d igual a 1,59; síntomas de TDAH d igual a 0,21, no significativo">
+          <!-- escala: 280 px por unidad desde x=230 -->
+          <text x="0" y="56" class="t32">Fatiga</text>
+          <text x="0" y="132" class="t32">Síntomas</text><text x="0" y="164" class="t24" style="fill:#4A5568">de TDAH</text>
+          <rect class="bx" x="230" y="20" width="445" height="52" rx="6" fill="#0F766E"/>
+          <rect class="bx" x="230" y="100" width="59" height="52" rx="6" fill="#4A5568"/>
+          <text x="655" y="58" text-anchor="end" class="t40" style="fill:#fff">d = 1,59</text>
+          <text x="305" y="138" class="t32" style="fill:#4A5568">d = 0,21 · no significativo</text>
+        </svg>
+        <p class="peq" style="margin-top:14px;color:var(--tinta)">Melatonina 0,5 mg: −14 % de síntomas, que vuelven al punto de partida a las 2 semanas de dejarla.</p>
+      </div>
+      <div class="tarjeta">
+        <h2><svg class="ico p" aria-hidden="true"><use href="#i-pulso"/></svg>Una sesión de ejercicio</h2>
+        <p class="cifra m">g = 0,55</p>
+        <p class="rot" style="margin-top:44px">Efecto moderado en el control inhibitorio, poco después de hacerlo</p>
+        <p class="peq" style="margin-top:14px;color:var(--tinta)">Intervalo: 0,32–0,79. Evidencia preliminar.</p>
+      </div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Que tratar el sueño mejore el TDAH no está demostrado. Primero, higiene del sueño y revisar la hora del fármaco. Son datos de estudios, no pautas.</span></p>
+  <p class="pie"><span>van der Ham 2026&nbsp;<b class="nv">C</b> adultos (n=70) — van Andel 2021&nbsp;<b class="nv">C</b> adultos (n=51, 3 semanas) — Xu 2026&nbsp;<b class="nv">A</b> adultos, preliminar — Kooij 2019&nbsp;<b class="nv">C</b></span></p>
+</section>
+
+<!-- ============ 20 · INATENTOS ============ -->
+<section class="slide" data-sec="4" data-t="Casi nada es específico de inatentos">
+  <h1>Casi nada se ha estudiado solo en inatentos</h1>
+  <div class="main">
+    <p class="cuerpo s">Lo poco que hay no apunta a que respondan peor. No tener hiperactividad no es motivo para descartar la medicación.</p>
+    <div class="dos">
+      <div class="tarjeta">
+        <h2>Fármaco · buena respuesta al metilfenidato</h2>
+        <svg width="740" height="170" viewBox="0 0 740 170" role="img" aria-label="Buena respuesta al metilfenidato: 66,7 % en inatentos y 73,9 % en combinados">
+          <!-- escala: 100 % = 520 px desde x=220 -->
+          <text x="0" y="52" class="t32">Inatentos</text><text x="0" y="132" class="t32">Combinados</text>
+          <rect x="220" y="16" width="520" height="52" rx="6" fill="#FAF7F2"/><rect x="220" y="96" width="520" height="52" rx="6" fill="#FAF7F2"/>
+          <rect class="bx" x="220" y="16" width="347" height="52" rx="6" fill="#16202E"/>
+          <rect class="bx" x="220" y="96" width="384" height="52" rx="6" fill="#4A5568"/>
+          <text x="552" y="54" text-anchor="end" class="t40" style="fill:#fff">66,7 %</text>
+          <text x="589" y="134" text-anchor="end" class="t40" style="fill:#fff">73,9 %</text>
+        </svg>
+        <p class="peq" style="margin-top:10px">Parecida, en un estudio abierto pequeño (n=47).</p>
+      </div>
+      <div class="tarjeta">
+        <h2>Terapia metacognitiva</h2>
+        <div class="fila" style="gap:32px">
+          <svg class="ico" style="width:120px;height:120px;stroke-width:6" aria-hidden="true"><use href="#i-aprox"/></svg>
+          <p class="rot" style="font-size:38px">El subtipo no cambió el efecto</p>
+        </div>
+        <p class="peq" style="margin-top:22px">Se analizó como moderador y no hubo interacción. Muestra mayoritariamente inatenta (n=88).</p>
+      </div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>«No hay evidencia de peor respuesta» no es «igual respuesta demostrada»: no existen ensayos de fármacos en inatentos puros. La depresión sí empeoró la respuesta.</span></p>
+  <p class="pie"><span>Sobanski 2007&nbsp;<b class="nv">C</b> inatentos, adultos — Solanto 2010&nbsp;<b class="nv">B</b> inatentos, adultos — Willcutt 2012&nbsp;<b class="nv">A</b> extrapolado</span></p>
+</section>
+
+<!-- ============ 21 · NO FUNCIONA ============ -->
+<section class="slide" data-sec="5" data-t="Lo que no ha demostrado funcionar">
+  <h1>Lo que no ha demostrado funcionar</h1>
+  <div class="main">
+    <div class="dos">
+      <div class="tarjeta" style="border-top:10px solid var(--rojo)">
+        <h2 class="c-rojo"><svg class="ico x" aria-hidden="true"><use href="#i-no"/></svg>Probado, sin efecto</h2>
+        <ul class="lista">
+          <li><span>Neurofeedback<small>sin efecto en la inatención adulta</small></span></li>
+          <li><span>Entrenamiento cognitivo o «juegos cerebrales»<small>mejora la tarea entrenada, sin transferencia duradera</small></span></li>
+          <li><span>Modafinilo<small>no superior al placebo en adultos</small></span></li>
+        </ul>
+      </div>
+      <div class="tarjeta" style="border-top:10px dashed var(--tinta2)">
+        <h2><svg class="ico x" aria-hidden="true"><use href="#i-duda"/></svg>Sin demostrar</h2>
+        <ul class="lista">
+          <li><span>Coaching<small>ningún estudio controlado; puede servir de apoyo práctico</small></span></li>
+          <li><span>Psicoeducación sola<small>no reduce la inatención, aunque las guías la piden como primer paso</small></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>«Probado y sin efecto» no es lo mismo que «nadie lo ha probado bien». La segunda columna no dice que no sirvan.</span></p>
+  <p class="pie"><span>Scholz et al. (J Ment Health)&nbsp;<b class="nv">A</b> — Faraone 2021&nbsp;<b class="nv">A</b> — Cortese 2018 y Ostinelli 2025&nbsp;<b class="nv">A</b> — Kooij 2019&nbsp;<b class="nv">C</b> — NICE 2018&nbsp;<b class="nv">A</b> · adultos</span></p>
+</section>
+
+<!-- ============ 22 · GUANFACINA ============ -->
+<section class="slide oscura" data-sec="5" data-t="Guanfacina: en adultos, no">
+  <h1 style="font-size:104px">Guanfacina: en adultos, no</h1>
+  <div class="main">
+    <blockquote style="font-size:46px;line-height:1.25;font-weight:600;border-left:10px solid var(--ambar);padding-left:40px;max-width:1500px">«No se ha establecido la seguridad y eficacia de guanfacina en pacientes adultos y de edad avanzada con TDAH. Por lo tanto, <span style="color:var(--ambar)">no se debe utilizar guanfacina en este grupo de edad</span>.»</blockquote>
+    <p class="cuerpo s">En España solo está autorizada de 6 a 17 años. Y fue el fármaco con peor aceptabilidad frente a placebo (OR 3,70).</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Hay dos ensayos con resultado positivo en adultos, pero no compensan el resultado nulo en el mayor metaanálisis, los abandonos y la advertencia de la ficha.</span></p>
+  <p class="pie"><span>Ficha técnica de Intuniv, sección 4.2 (AEMPS-CIMA)&nbsp;<b class="nv">Of</b> — Ostinelli 2025&nbsp;<b class="nv">A</b> adultos — Ensayos positivos: Radonjić 2023&nbsp;<b class="nv">A</b>, Iwanami 2020&nbsp;<b class="nv">B</b></span></p>
+</section>
+
+<!-- ============ 23 · CORTO PLAZO ============ -->
+<section class="slide" data-sec="6" data-t="Tensión y pulso: se miden siempre">
+  <h1>Tensión y pulso suben poco. Se miden siempre</h1>
+  <div class="main">
+    <div class="fila" style="gap:64px">
+      <svg class="ico" style="width:200px;height:200px;stroke-width:3" aria-hidden="true"><use href="#i-pulso"/></svg>
+      <div><p class="cifra m" style="font-size:170px">+4,4<span class="u">lpm</span></p><p class="rot" style="margin-top:8px">de pulso</p></div>
+      <div style="margin-left:40px"><p class="cifra m" style="font-size:170px">+1,7<span class="u">mmHg</span></p><p class="rot" style="margin-top:8px">de tensión sistólica</p></div>
+    </div>
+    <p class="cuerpo">Metilfenidato frente a placebo. Hay que medirlos con cualquier fármaco: los estimulantes no los subieron más que la atomoxetina.</p>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Son promedios de ensayos cortos, con certeza muy baja. No dicen nada del largo plazo.</span></p>
+  <p class="pie"><span>Farhat 2025&nbsp;<b class="nv">A</b> adultos · ensayos con una mediana de 7 semanas · certeza muy baja</span></p>
+</section>
+
+<!-- ============ 24 · RIESGO POR AÑOS ============ -->
+<section class="slide" data-sec="6" data-t="Corazón: riesgo por años de uso">
+  <h1>Corazón: un coste real, modesto, ligado a la dosis y a los años</h1>
+  <div class="main" style="gap:0">
+    <div class="fila" style="gap:56px;align-items:center">
+      <svg width="1040" height="452" viewBox="0 0 1040 452" role="img" aria-label="Riesgo cardiovascular según los años de uso, frente a no usarla: 0,99 con menos de un año; 1,09 con 1 a 2 años; 1,15 con 2 a 3; 1,27 con 3 a 5; 1,23 con más de 5">
+        <!-- y = 360 − (OR − 0,9)·640 -->
+        <text x="0" y="24" class="t24" style="fill:#4A5568">Enfermedad cardiovascular según años de uso (OR frente a no usarla)</text>
+        <line x1="90" y1="296" x2="1020" y2="296" stroke="#4A5568" stroke-width="3" stroke-dasharray="8 8"/>
+        <line x1="90" y1="168" x2="1020" y2="168" stroke="#D9D3C7" stroke-width="2"/>
+        <line x1="90" y1="50" x2="90" y2="372" stroke="#4A5568" stroke-width="3"/>
+        <path d="M78 340 l24 -8 M78 350 l24 -8" stroke="#4A5568" stroke-width="3" fill="none"/>
+        <g class="t24" text-anchor="end" style="fill:#4A5568"><text x="76" y="304">1,0</text><text x="76" y="176">1,2</text></g>
+        <polyline points="190,302 370,238 550,200 730,123 910,149" fill="none" stroke="#B42318" stroke-width="4" stroke-opacity=".45"/>
+        <g stroke="#B42318" stroke-width="5"><line x1="730" y1="187" x2="730" y2="46"/><line x1="716" y1="187" x2="744" y2="187"/><line x1="716" y1="46" x2="744" y2="46"/>
+          <line x1="910" y1="219" x2="910" y2="66"/><line x1="896" y1="219" x2="924" y2="219"/><line x1="896" y1="66" x2="924" y2="66"/></g>
+        <g fill="#B42318"><circle cx="190" cy="302" r="13"/><circle cx="370" cy="238" r="13"/><circle cx="550" cy="200" r="13"/><circle cx="730" cy="123" r="13"/><circle cx="910" cy="149" r="13"/></g>
+        <g class="t32"><text x="190" y="270" text-anchor="middle">0,99</text><text x="370" y="212" text-anchor="middle">1,09</text><text x="550" y="174" text-anchor="middle">1,15</text><text x="752" y="104">1,27</text><text x="932" y="140">1,23</text></g>
+        <g class="t28" text-anchor="middle"><text x="190" y="408">0–1</text><text x="370" y="408">1–2</text><text x="550" y="408">2–3</text><text x="730" y="408">3–5</text><text x="910" y="408">más de 5</text></g>
+        <text x="1020" y="436" text-anchor="end" class="t24" style="fill:#4A5568">años de uso · el eje vertical no empieza en cero</text>
+      </svg>
+      <div style="flex:1;display:flex;flex-direction:column;gap:18px">
+        <div><p class="cifra m c-rojo" style="font-size:150px">+4&nbsp;<span class="u" style="font-size:.5em">%</span></p><p class="rot">de riesgo por cada año de uso</p></div>
+        <p class="rot" style="font-size:30px">Hipertensión: <b>OR 1,80</b> con más de 5 años</p>
+        <p class="rot" style="font-size:30px">Enfermedad arterial: <b>OR 1,65</b> con 3–5 años</p>
+        <p class="peq">Solo significativo con dosis medias altas: ≥&nbsp;1,5 dosis diarias definidas (en metilfenidato, unos 45–60 mg/día o más).</p>
+      </div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Asociación, no causalidad. Sin aumento significativo de arritmias, insuficiencia cardiaca, cardiopatía isquémica ni tromboembolia. La dosis es un dato del registro, no una pauta.</span></p>
+  <p class="pie"><span>Zhang 2024&nbsp;<b class="nv">B</b> registros suecos, 278.027 personas de 6 a 64 años, hasta 14 años de seguimiento; incluye adultos · las líneas verticales son intervalos de confianza</span></p>
+</section>
+
+<!-- ============ 25 · BALANZA ============ -->
+<section class="slide" data-sec="6" data-t="Ni inocua ni peligrosa por sistema">
+  <h1>Ni inocua ni peligrosa por sistema</h1>
+  <div class="main" style="gap:0">
+    <p class="cuerpo s" style="margin-bottom:12px">Son asociaciones observadas en registros. Sirven para decidir con tu médico, no para sumar y restar.</p>
+    <svg width="1680" height="72" viewBox="0 0 1680 72" role="img" aria-label="Balanza con el fiel horizontal: no se inclina hacia ningún lado" style="margin-bottom:-4px">
+      <line x1="400" y1="34" x2="1280" y2="34" stroke="#16202E" stroke-width="8" stroke-linecap="round"/>
+      <path d="M840 34 L812 6 H868 Z" fill="#F2A900" stroke="#16202E" stroke-width="4" stroke-linejoin="round"/>
+      <line x1="400" y1="34" x2="400" y2="72" stroke="#16202E" stroke-width="5"/><line x1="1280" y1="34" x2="1280" y2="72" stroke="#16202E" stroke-width="5"/>
+      <circle cx="400" cy="34" r="10" fill="#16202E"/><circle cx="1280" cy="34" r="10" fill="#16202E"/>
+    </svg>
+    <div class="dos" style="align-items:stretch">
+      <div class="tarjeta" style="border-top:10px solid var(--rojo);padding-top:16px;padding-bottom:14px">
+        <h2 class="c-rojo" style="margin-bottom:14px;font-size:28px">Riesgos asociados al uso prolongado</h2>
+        <ul class="lista" style="gap:4px">
+          <li style="font-size:30px"><span>Riesgo cardiovascular: <b>+4 % por año</b> de uso</span></li>
+          <li style="font-size:30px"><span>Hipertensión: <b>OR 1,80</b> (más de 5 años)</span></li>
+          <li style="font-size:30px"><span>Enfermedad arterial: <b>OR 1,65</b> (3–5 años)</span></li>
+        </ul>
+        <p class="peq" style="margin-top:12px">Por encima de 1 = más riesgo. Sin aumento significativo de arritmias ni de cardiopatía isquémica.</p>
+      </div>
+      <div class="tarjeta" style="border-top:10px solid var(--verde);padding-top:16px;padding-bottom:14px">
+        <h2 class="c-verde" style="margin-bottom:14px;font-size:28px">Beneficios asociados a iniciar tratamiento</h2>
+        <ul class="lista" style="gap:4px">
+          <li style="font-size:30px"><span>Mortalidad a 2 años: <b>HR 0,79</b></span></li>
+          <li style="font-size:30px"><span>Conducta suicida: <b>0,83</b></span></li>
+          <li style="font-size:30px"><span>Abuso de sustancias: <b>0,85</b></span></li>
+          <li style="font-size:30px"><span>Accidentes de tráfico: <b>0,88</b></span></li>
+          <li style="font-size:30px"><span>Criminalidad: <b>0,87</b></span></li>
+        </ul>
+        <p class="peq" style="margin-top:12px">Por debajo de 1 = menos eventos. La mortalidad baja por menos muertes no naturales.</p>
+      </div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Asociación ≠ causalidad</span><span>La balanza no se inclina a propósito: son magnitudes distintas, de los mismos registros suecos, y ninguna fuente hace el balance neto.</span></p>
+  <p class="pie"><span>Riesgos: Zhang 2024&nbsp;<b class="nv">B</b> — Mortalidad: Li 2024 (JAMA)&nbsp;<b class="nv">B</b> — Suicidio, sustancias, tráfico y criminalidad: Zhang 2025 (BMJ)&nbsp;<b class="nv">B</b> · registros suecos del mismo grupo; incluyen adultos</span></p>
+</section>
+
+<!-- ============ 26 · MITOS ============ -->
+<section class="slide" data-sec="7" data-t="Tres mitos, tres matices">
+  <h1>Tres mitos, tres matices</h1>
+  <div class="main">
+    <div class="mitos">
+      <div class="m"><s>«El TDA es otro trastorno, más leve»</s></div><div class="f" aria-hidden="true">→</div>
+      <div class="r">Es el mismo trastorno, y la inatención se asocia a <b>más</b> deterioro laboral y de autoestima.<small>Willcutt 2012&nbsp;<b class="nv">A</b> · Faraone 2021&nbsp;<b class="nv">A</b></small></div>
+      <div class="m"><s>«Se cura al crecer»</s></div><div class="f" aria-hidden="true">→</div>
+      <div class="r">La hiperactividad suele bajar con la edad; la inatención es lo que más persiste.<small>Faraone 2021&nbsp;<b class="nv">A</b> adultos</small></div>
+      <div class="m"><s>«Los estimulantes llevan a la droga»</s></div><div class="f" aria-hidden="true">→</div>
+      <div class="r">Ninguna fuente lo respalda. En registros, tratarse se asocia a <b>menos</b> abuso de sustancias (0,85).<small>Zhang 2025&nbsp;<b class="nv">B</b> · Kooij 2019&nbsp;<b class="nv">C</b></small></div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>«Se asocia» no es «protege». Y el uso indebido existe, sobre todo con liberación inmediata.</span></p>
+  <p class="pie"><span>Willcutt 2012&nbsp;<b class="nv">A</b> — Faraone 2021&nbsp;<b class="nv">A</b> — Zhang 2025 (BMJ)&nbsp;<b class="nv">B</b> — Kooij 2019&nbsp;<b class="nv">C</b></span></p>
+</section>
+
+<!-- ============ 27 · PLAN ============ -->
+<section class="slide" data-sec="8" data-t="Cuatro palancas para gobernarlo">
+  <h1>Cuatro palancas para gobernarlo</h1>
+  <div class="main">
+    <div class="palancas">
+      <div class="tarjeta"><svg class="ico" aria-hidden="true"><use href="#i-calendario"/></svg><b>Externaliza</b><span>Un único calendario y lista de tareas, revisado a diario. Empieza por un primer paso de 5–10 minutos.</span><small>Safren y Solanto, 2010&nbsp;<b class="nv">B</b></small></div>
+      <div class="tarjeta"><svg class="ico" aria-hidden="true"><use href="#i-luna"/></svg><b>Cuida el sueño</b><span>Horario regular y luz por la mañana. Si empeora, revisa con tu médico la hora y la formulación del fármaco.</span><small>Kooij 2019&nbsp;<b class="nv">C</b> · deducción</small></div>
+      <div class="tarjeta"><svg class="ico" aria-hidden="true"><use href="#i-pulso"/></svg><b>Mide</b><span>Tensión, pulso y peso, con cualquier fármaco. Y la dosis eficaz más baja.</span><small>Farhat&nbsp;2025&nbsp;<b class="nv">A</b><br>NICE&nbsp;2018&nbsp;<b class="nv">A</b><br>Zhang&nbsp;2024&nbsp;<b class="nv">B</b></small></div>
+      <div class="tarjeta"><svg class="ico" aria-hidden="true"><use href="#i-revisar"/></svg><b>Revisa cada año</b><span>Si el tratamiento sigue aportando: no hay ensayos sólidos a largo plazo.</span><small>NICE&nbsp;2018&nbsp;<b class="nv">A</b><br>Ostinelli&nbsp;2025&nbsp;<b class="nv">A</b></small></div>
+    </div>
+  </div>
+  <p class="matiz"><span class="et">Matiz</span><span>Lectura práctica: parte es deducción nuestra, no una pauta. En la primera palanca, lo demostrado es el paquete de TCC, no cada técnica suelta.</span></p>
+  <p class="pie"><span>Elaborado a partir de las fuentes indicadas en cada tarjeta · háblalo con tu psiquiatra antes de cambiar nada</span></p>
+</section>
+
+<!-- ============ 28 · PREGUNTAS ============ -->
+<section class="slide" data-sec="9" data-t="Cinco preguntas para tu consulta">
+  <h1>Cinco preguntas para tu próxima consulta</h1>
+  <div class="main">
+    <ol class="preguntas">
+      <li>¿Fui inquieto o impulsivo de niño? ¿Hay sueño, ánimo o «niebla» que tratar aparte?</li>
+      <li>¿Qué formulación encaja con mi jornada y mi sueño? ¿Con qué escala mediremos la respuesta?</li>
+      <li>Si el metilfenidato no basta, ¿cuándo pasar a lisdexanfetamina (visado) o a atomoxetina?</li>
+      <li>¿Cada cuánto controlamos tensión, pulso y peso? ¿Qué dosis consideramos «alta»?</li>
+      <li>¿Tengo acceso a TCC o a terapia metacognitiva específica para TDAH, individual o en grupo?</li>
+    </ol>
+  </div>
+  <p class="pie"><span>Preguntas de la base de conocimiento (índice, 14-nov-2026) · no sustituyen el criterio de tu psiquiatra</span></p>
+</section>
+
+<!-- ============ 29 · CIERRE ============ -->
+<section class="slide oscura" data-sec="10" data-t="Tres ideas para llevarte">
+  <h1 style="font-size:96px">Tres ideas para llevarte</h1>
+  <div class="main">
+    <ol class="ideas">
+      <li>Es el mismo trastorno, con otro perfil.</li>
+      <li>Lo mejor probado son los fármacos, a corto plazo y en síntomas. La TCC suma.</li>
+      <li>Ni inocuo ni peligroso: medir, usar la dosis eficaz más baja y revisar cada año.</li>
+    </ol>
+  </div>
+  <p class="matiz"><span class="et">Recuerda</span><span>Esto no sustituye a tu psiquiatra: sirve para entender y para preparar consultas.</span></p>
+  <p class="pie"><span>Síntesis de las ideas clave de la base de conocimiento, 14-nov-2026 · fuentes en la diapositiva siguiente</span></p>
+</section>
+
+<!-- ============ 30 · BIBLIOGRAFÍA ============ -->
+<section class="slide" data-sec="10" data-t="Fuentes citadas">
+  <h1 style="font-size:60px">Fuentes citadas</h1>
+  <div class="main" style="justify-content:flex-start;padding-top:20px;gap:18px">
+    <ul class="biblio">
+      <li><span><b>Faraone 2021</b> · Neurosci Biobehav Rev</span><b class="nv">A</b></li>
+      <li><span><b>Kooij 2019</b> · Eur Psychiatry</span><b class="nv">C</b></li>
+      <li><span><b>NICE 2018</b> · guía NG87 (act. 2019)</span><b class="nv">A</b></li>
+      <li><span><b>Epstein 2013</b> · Neuropsychiatry</span><b class="nv">Of</b></li>
+      <li><span><b>Willcutt 2012</b> · J Abnorm Psychol</span><b class="nv">A</b></li>
+      <li><span><b>Becker 2023</b> · JAACAP</span><b class="nv">C</b></li>
+      <li><span><b>Sobanski 2007</b> · Nervenarzt</span><b class="nv">C</b></li>
+      <li><span><b>Sobanski 2008</b> · Eur Psychiatry</span><b class="nv">C</b></li>
+      <li><span><b>Cortese 2025</b> · World Psychiatry</span><b class="nv">C</b></li>
+      <li><span><b>Beheshti 2020</b> · BMC Psychiatry</span><b class="nv">A</b></li>
+      <li><span><b>Bijlenga 2019</b> · ADHD Atten Def Hyp Disord</span><b class="nv">C</b></li>
+      <li><span><b>van Andel 2021</b> · Chronobiol Int</span><b class="nv">C</b></li>
+      <li><span><b>van der Ham 2026</b> · PMID 41140200</span><b class="nv">C</b></li>
+      <li><span><b>Cortese 2018</b> · Lancet Psychiatry</span><b class="nv">A</b></li>
+      <li><span><b>Ostinelli 2025</b> · Lancet Psychiatry</span><b class="nv">A</b></li>
+      <li><span><b>Gosling 2025</b> · BMJ</span><b class="nv">A</b></li>
+      <li><span><b>Boesen 2022</b> · Cochrane</span><b class="nv">A</b></li>
+      <li><span><b>Radonjić 2023</b> · CNS Drugs</span><b class="nv">A</b></li>
+      <li><span><b>Iwanami 2020</b> · J Clin Psychiatry</span><b class="nv">B</b></li>
+      <li><span><b>Farhat 2025</b> · Lancet Psychiatry</span><b class="nv">A</b></li>
+      <li><span><b>Zhang 2024</b> · JAMA Psychiatry</span><b class="nv">B</b></li>
+      <li><span><b>Li 2024</b> · JAMA</span><b class="nv">B</b></li>
+      <li><span><b>Zhang 2025</b> · BMJ</span><b class="nv">B</b></li>
+      <li><span><b>Safren 2010</b> · JAMA</span><b class="nv">B</b></li>
+      <li><span><b>Solanto 2010</b> · Am J Psychiatry</span><b class="nv">B</b></li>
+      <li><span><b>Li y Zhang 2024</b> · J Atten Disord</span><b class="nv">A</b></li>
+      <li><span><b>Young 2020</b> · J Atten Disord</span><b class="nv">A</b></li>
+      <li><span><b>Scholz et al.</b> · J Ment Health</span><b class="nv">A</b></li>
+      <li><span><b>Kim y Jung 2025</b> · Medicine</span><b class="nv">A</b></li>
+      <li><span><b>D'Amelio 2026</b> · Psychol Med</span><b class="nv">B</b></li>
+      <li><span><b>Xu 2026</b> · Psychol Sport Exerc</span><b class="nv">A</b></li>
+      <li><span><b>AEMPS-CIMA</b> · fichas técnicas</span><b class="nv">Of</b></li>
+      <li><span><b>AEMPS-CIMA</b> · ficha de Intuniv, sección 4.2</span><b class="nv">Of</b></li>
+      <li><span><b>Ministerio de Sanidad</b> · BIFIMED, nov-2026</span><b class="nv">Of</b></li>
+    </ul>
+    <p class="peq">Varias proceden del mismo grupo y comparten datos, así que no cuentan como confirmaciones independientes: Cortese, Ostinelli y Farhat; y los registros suecos de Zhang y Li.</p>
+  </div>
+  <p class="pie"><span>Lista completa (70 fuentes, con su estado de lectura) en el archivo fuentes.md de la base de conocimiento · Niveles: A, B, C, D y Of (oficial)</span></p>
+</section>
+
+<!-- ============ Cromo ============ -->
+<nav class="tira" aria-label="Secciones"></nav>
+<button class="btn-mapa" type="button" aria-haspopup="dialog" aria-expanded="false">Mapa · M</button>
+<button class="nav ant" type="button" aria-label="Diapositiva anterior"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M16 4 L7 13 L16 22"/></svg></button>
+<button class="nav sig" type="button" aria-label="Diapositiva siguiente"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M10 4 L19 13 L10 22"/></svg></button>
+<div class="prog" aria-hidden="true"></div>
+
+<div class="mapa" role="dialog" aria-modal="true" aria-label="Mapa de secciones">
+  <h2>Mapa de secciones</h2>
+  <button class="cerrar" type="button">Cerrar · Esc</button>
+  <ol></ol>
+  <p class="ayuda">← → para moverte · Inicio y Fin para ir al principio o al final · M abre y cierra este mapa</p>
+</div>
+<div class="sr" aria-live="polite" id="anuncio"></div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var SECCIONES=["Inicio","Qué es","Cómo se vive","Diagnóstico","Qué funciona","Qué no funciona","Seguridad a largo plazo","Mitos","Plan práctico","Preguntas para la consulta","Cierre y bibliografía"];
+  var stage=document.getElementById("stage");
+  var slides=[].slice.call(stage.querySelectorAll(".slide"));
+  var N=slides.length, actual=0, primera=true;
+  var tira=stage.querySelector(".tira"), prog=stage.querySelector(".prog");
+  var mapa=stage.querySelector(".mapa"), lista=mapa.querySelector("ol");
+  var btnMapa=stage.querySelector(".btn-mapa"), btnAnt=stage.querySelector(".nav.ant"), btnSig=stage.querySelector(".nav.sig");
+  var anuncio=document.getElementById("anuncio");
+  function dos(n){return (n<10?"0":"")+n;}
+
+  /* Cabeceras, atributos de accesibilidad y agrupación por secciones */
+  var grupos=SECCIONES.map(function(){return [];});
+  slides.forEach(function(s,i){
+    var sec=+s.dataset.sec; grupos[sec].push(i);
+    s.setAttribute("aria-roledescription","diapositiva");
+    s.setAttribute("aria-label",(i+1)+" de "+N+": "+s.dataset.t);
+    if(i>0){
+      var cab=document.createElement("header"); cab.className="cab";
+      cab.innerHTML="<span>"+dos(sec)+" · "+SECCIONES[sec]+"</span><span>"+(i+1)+" / "+N+"</span>";
+      s.insertBefore(cab,s.firstChild);
+    }
+  });
+
+  /* Tira de secciones, barra de progreso y mapa */
+  grupos.forEach(function(g,sec){
+    if(!g.length) return;
+    var b=document.createElement("button"); b.type="button"; b.textContent=sec;
+    b.setAttribute("aria-label","Sección "+sec+": "+SECCIONES[sec]); b.title=SECCIONES[sec];
+    b.addEventListener("click",function(){ir(g[0]);}); tira.appendChild(b);
+    var seg=document.createElement("i"); seg.style.flex=g.length+" 1 0"; seg.appendChild(document.createElement("b")); prog.appendChild(seg);
+    var li=document.createElement("li"); var t=document.createElement("b"); t.textContent=dos(sec)+" · "+SECCIONES[sec]; li.appendChild(t);
+    g.forEach(function(i){
+      var bt=document.createElement("button"); bt.type="button"; bt.dataset.i=i;
+      bt.textContent=(i+1)+". "+slides[i].dataset.t;
+      bt.addEventListener("click",function(){cerrarMapa();ir(i);}); li.appendChild(bt);
+    });
+    lista.appendChild(li);
+  });
+
+  function ir(i,silencio){
+    i=Math.max(0,Math.min(N-1,i));
+    slides[actual].classList.remove("active");
+    actual=i;
+    var s=slides[i]; s.classList.add("active");
+    stage.classList.toggle("anim",!primera);
+    primera=false;
+    stage.classList.toggle("en-oscuro",s.classList.contains("oscura"));
+    var sec=+s.dataset.sec, g=grupos[sec];
+    [].forEach.call(tira.children,function(b){var act=(+b.textContent===sec); b.classList.toggle("act",act); if(act){b.setAttribute("aria-current","true");}else{b.removeAttribute("aria-current");}});
+    var k=0;
+    grupos.forEach(function(gr,j){ if(!gr.length) return; var seg=prog.children[k++];
+      seg.classList.toggle("hecha",j<sec);
+      seg.firstChild.style.width=(j===sec?((g.indexOf(i)+1)/g.length*100):0)+"%";
+    });
+    [].forEach.call(lista.querySelectorAll("button"),function(b){b.classList.toggle("act",+b.dataset.i===i);});
+    btnAnt.disabled=(i===0); btnSig.disabled=(i===N-1);
+    document.title=(i+1)+" / "+N+" · "+s.dataset.t+" · TDA en adultos";
+    anuncio.textContent="Diapositiva "+(i+1)+" de "+N+": "+s.dataset.t;
+    if(!silencio){ try{history.replaceState(null,"","#"+(i+1));}catch(e){location.hash=String(i+1);} }
+  }
+  function leerDestino(){
+    var m=/[?&](?:slide|n)=(\d+)/.exec(location.search)||/^#(\d+)$/.exec(location.hash);
+    return m?(+m[1]-1):0;
+  }
+  function abrirMapa(){mapa.classList.add("abierto");btnMapa.setAttribute("aria-expanded","true");var b=lista.querySelector("button.act");if(b)b.focus();}
+  function cerrarMapa(){mapa.classList.remove("abierto");btnMapa.setAttribute("aria-expanded","false");}
+  function mapaAbierto(){return mapa.classList.contains("abierto");}
+
+  btnAnt.addEventListener("click",function(){ir(actual-1);});
+  btnSig.addEventListener("click",function(){ir(actual+1);});
+  btnMapa.addEventListener("click",function(){mapaAbierto()?cerrarMapa():abrirMapa();});
+  mapa.querySelector(".cerrar").addEventListener("click",function(){cerrarMapa();btnMapa.focus();});
+
+  document.addEventListener("keydown",function(e){
+    if(e.altKey||e.ctrlKey||e.metaKey) return;
+    var k=e.key;
+    if(k==="Escape"){ if(mapaAbierto()){cerrarMapa();btnMapa.focus();} return; }
+    if(k==="m"||k==="M"){ mapaAbierto()?cerrarMapa():abrirMapa(); e.preventDefault(); return; }
+    if(mapaAbierto()) return;
+    var enBoton=e.target&&e.target.tagName==="BUTTON";
+    if(k==="ArrowRight"||k==="PageDown"||(k===" "&&!enBoton)){ir(actual+1);e.preventDefault();}
+    else if(k==="ArrowLeft"||k==="PageUp"){ir(actual-1);e.preventDefault();}
+    else if(k==="Home"){ir(0);e.preventDefault();}
+    else if(k==="End"){ir(N-1);e.preventDefault();}
+  });
+
+  /* Clic o toque: tercio izquierdo = anterior, tercio derecho = siguiente */
+  stage.addEventListener("click",function(e){
+    if(mapaAbierto()||e.target.closest("button,a")) return;
+    var r=stage.getBoundingClientRect(), x=(e.clientX-r.left)/r.width;
+    if(x>2/3) ir(actual+1); else if(x<1/3) ir(actual-1);
+  });
+  var tx=null,ty=null;
+  stage.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+  stage.addEventListener("touchend",function(e){
+    if(tx===null||mapaAbierto()) return;
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty; tx=null;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){ ir(actual+(dx<0?1:-1)); e.preventDefault(); }
+  });
+
+  window.addEventListener("hashchange",function(){var d=leerDestino(); if(d!==actual) ir(d,true);});
+
+  /* Escalado del lienzo de 1920×1080 a la ventana */
+  function ajustar(){
+    if(window.matchMedia&&window.matchMedia("print").matches) return;
+    var e=Math.min(window.innerWidth/1920,window.innerHeight/1080);
+    stage.style.transform="translate(-50%,-50%) scale("+e+")";
+  }
+  window.addEventListener("resize",ajustar);
+  ajustar();
+  ir(leerDestino(),true);
+})();
+</script>
+</body>
+</html>
