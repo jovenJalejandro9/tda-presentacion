@@ -1078,10 +1078,14 @@ button:focus-visible{outline:4px solid var(--violeta);outline-offset:3px}
   /* Escalado del lienzo de 1920×1080 a la ventana */
   function ajustar(){
     if(window.matchMedia&&window.matchMedia("print").matches) return;
-    var e=Math.min(window.innerWidth/1920,window.innerHeight/1080);
+    var vv=window.visualViewport, de=document.documentElement;
+    var w=(vv&&vv.width)||de.clientWidth||window.innerWidth;
+    var h=(vv&&vv.height)||de.clientHeight||window.innerHeight;
+    var e=Math.min(w/1920,h/1080);
     stage.style.transform="translate(-50%,-50%) scale("+e+")";
   }
   window.addEventListener("resize",ajustar);
+  if(window.visualViewport) window.visualViewport.addEventListener("resize",ajustar);
   ajustar();
   ir(leerDestino(),true);
 })();
